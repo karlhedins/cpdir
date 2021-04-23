@@ -1,0 +1,62 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "ts-node-dev --project './tsconfig.commonjs.json' --files src/index.ts",
+    "dev": "ts-node-dev --respawn --project './tsconfig.commonjs.json' --files src/index.ts",
+    "start:old": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "cpdir",
+  "author": "Karl Hedin",
+  "module": "dist/cpdir.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/cpdir.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/cpdir.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "@types/fs-extra": "9.0.11",
+    "husky": "^6.0.0",
+    "size-limit": "^4.10.2",
+    "ts-node-dev": "1.1.6",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "fs-extra": "9.1.0"
+  }
+}
